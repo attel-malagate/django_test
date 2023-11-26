@@ -1,0 +1,38 @@
+{% extends 'registration_app/base.html' %}
+
+{% block body_block %}
+
+<div class="container">
+    <div class="row">
+    <div class="col"></div> <div class="col-8">
+        <div class="col-8">
+            <div class="container-fluid py-5">
+                {% if registered %}
+                <h1 class="display-5 fw-bold">Welcome! Thanks for registering!</h1>
+                {% else %}
+                <h1 class="display-5 fw-bold">Register here:</h1>
+                <p class="col-md-8 fs-4">Time to register</p>
+                <form enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                    {% for field in user_form %}
+                    	{{ field.label }}
+                        {{ field }}
+                    {% endfor %}
+                    {% for field in profile_form %}
+                    	{{ field.label }}
+                        {{ field }}
+                    {% endfor %}
+{#                    {{ user_form.as_p }} {#Defined as context dictionaries in the views.py#}
+{#                    {{ profile_form.as_p }} {#Defined as context dictionaries in the views.py#}
+                    <input type="submit" value="Register" class="btn btn-primary w-50">
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    <div class="col"></div> <div class="col-8">
+    </div>
+</div>
+
+{% endblock %}
+
+

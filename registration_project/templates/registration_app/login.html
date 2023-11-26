@@ -1,0 +1,36 @@
+{% extends 'registration_app/base.html' %}
+<link type="text/css" rel="stylesheet" href="{% url 'css/styles.css' %}"/>
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-8 d-flex justify-content-center">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">Please Log in</h1>
+                <p class="col-md-8 fs-4">Time to log in</p>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-8 d-flex justify-content-center">
+            <form action="{% url 'registration_app:user_login' %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label" for="username">Username</label>
+                    <input type="text" name="username" placeholder="Enter your username" class="form-control">
+
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" name="password" placeholder="Enter your password" class="form-control">
+
+                </div>
+                <input type="submit" value="Log In" class="btn btn-primary w-100">
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
